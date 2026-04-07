@@ -59,11 +59,11 @@ One of the most interesting parts was implementing **fluid typography** for the 
 The design uses `20px` on mobile and `24px` on desktop, so instead of using a media query, I decided to make the title scale smoothly using `clamp()`.
 
 To do that, I calculated the middle value based on both the desired font sizes and the viewport range:
-$$
+```math
 \[
 m = \frac{font_{max} - font_{min}}{viewport_{max} - viewport_{min}}
 \]
-$$
+```
 
 Then I converted that slope into a `vw` value and built the final expression:
 
