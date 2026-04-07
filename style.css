@@ -1,0 +1,76 @@
+@layer reset, tokens, base, components, utilities;
+
+@layer reset {
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    body, h1, p {
+        margin: 0;
+    }
+
+    img {
+        max-width: 100%;
+        display: block;
+    }
+}
+
+@layer tokens {
+    :root {
+        --clr-yellow: hsl(47 88% 63%);
+        --clr-gray-950: hsl(0 0% 7%);
+        --clr-gray-500: hsl(0 0% 42%);
+        --clr-white: hsl(0 0% 100%);
+
+        --ff-base: "Figtree", sans-serif;
+        --fs-100: 0.875rem;
+        --fs-500: 1rem;
+        --fs-700: 1.5rem;
+        --fw-medium: 500;
+        --fw-x-bold: 800;
+
+        --lh-base: 1.5;
+
+        --sp-50: 0.25rem;
+        --sp-100: 0.5rem;
+        --sp-150: 0.75rem;
+        --sp-300: 1.5rem;
+    }
+}
+
+@layer base {
+    body {
+        min-height: 100svh;
+        
+    }
+    
+    a {
+        color: ;
+        text-decoration: underline dotted 2px currentColor;
+    }
+
+    a:hover,
+    a:focus {
+        text-decoration: underline 1px currentColor;
+    }
+}
+
+@layer components {
+    
+    .attribution {
+        padding-block: var(--sp-500);
+
+        background-color: var(--clr-slate-900);
+        color: var(--clr-slate-300);
+
+        text-align: center;
+    }
+}
+
+@layer utilities {
+    .wrapper {
+        
+    }
+}
