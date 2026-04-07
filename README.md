@@ -29,9 +29,9 @@ This challenge also encouraged focusing on semantic HTML, visual precision, and 
 
 ### Screenshot
 
-![Desktop](/blog-preview-card/design/mi-solucion/blog-card-preview_desktop.png)
-![Mobile](/blog-preview-card/design/mi-solucion/blog-card-preview_mobile.png)
-![Mobile w/ hover and focus-visible states](/blog-preview-card/design/mi-solucion/blog-card-preview_hover-focus-states.png)
+![Desktop](/design/mi-solucion/blog-card-preview_desktop.png)
+![Mobile](/design/mi-solucion/blog-card-preview_mobile.png)
+![Mobile w/ hover and focus-visible states](/design/mi-solucion/blog-card-preview_hover-focus-states.png)
 
 ### Links
 
