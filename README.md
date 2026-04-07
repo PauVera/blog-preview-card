@@ -17,7 +17,6 @@ This is a solution to the [Blog preview card challenge on Frontend Mentor](https
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -27,95 +26,104 @@ Users should be able to:
 
 - See hover and focus states for all interactive elements on the page
 
+This challenge also encouraged focusing on semantic HTML, visual precision, and responsive typography. I used it as an opportunity to go a bit further and practice fluid type scaling and CSS architecture.
+
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![Desktop](/blog-preview-card/design/mi-solucion/blog-card-preview_desktop.png)
+![Mobile](/blog-preview-card/design/mi-solucion/blog-card-preview_mobile.png)
+![Mobile w/ hover and focus-visible states](/blog-preview-card/design/mi-solucion/blog-card-preview_hover-focus-states.png)
 
 ### Links
 
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Live site in GitHub](https://pauvera.github.io/blog-preview-card/)
 
 ## My process
 
 ### Built with
 
 - Semantic HTML5 markup
-- CSS custom properties
+- Mobile-first workflow
+- CSS custom properties (design tokens)
 - Flexbox
 - CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- Component-based CSS architecture
+- CSS cascade layers (`@layer`)
+- Fluid typography with `clamp()`
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+This challenge helped me reinforce several ideas that go beyond reproducing a design.
 
-To see how you can add code snippets, see below:
+One of the most interesting parts was implementing **fluid typography** for the card title.  
+The design uses `20px` on mobile and `24px` on desktop, so instead of using a media query, I decided to make the title scale smoothly using `clamp()`.
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
+To do that, I calculated the middle value based on both the desired font sizes and the viewport range:
+
+\[
+m = \frac{font_{max} - font_{min}}{viewport_{max} - viewport_{min}}
+\]
+
+Then I converted that slope into a `vw` value and built the final expression:
+
 ```css
-.proud-of-this-css {
-  color: papayawhip;
-}
+--fs-700: clamp(1.25rem, 1.18rem + 0.36vw, 1.5rem);
 ```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+
+This allowed the title to scale from 20px to 24px in a controlled way, reaching its maximum value at the target desktop viewport width.
+
+Another architectural decision I found valuable was choosing Flexbox with gap for the card content instead of using a generic vertical flow utility (such as Andy Bell’s lobotomized owl selector).
+
+Originally, I considered a reusable flow utility, but I concluded that:
+- a card is a self-contained interface
+- its internal layout is stable and intentional
+- display: flex communicates layout structure more clearly in this context
+
+```css
+.blog-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-150);
 }
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+That felt like a more explicit and maintainable decision for this component.
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+I also spent time thinking about token roles vs responsive behavior, which led me to create a dedicated fixed token for the author name size:
+
+```css
+--fs-200: 0.875rem;
+```
+
+This kept the typography system coherent while respecting the original design, where the author name remains fixed at 14px across viewport sizes.
+
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+Going forward, I want to continue focusing on:
+- layout systems and composition patterns
+- design systems and token architecture
+- accessibility and keyboard interaction states
+- CSS architecture and maintainable styling patterns
+- building fluid and responsive interfaces with intention
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
-
-### Useful resources
-
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+More specifically, I want to keep improving my ability to make architectural decisions based on component intent, rather than simply choosing a technique because it works.
 
 ### AI Collaboration
 
-Describe how you used AI tools (if any) during this project. This helps demonstrate your ability to work effectively with AI assistants.
+I used ChatGPT as a thinking partner throughout this challenge. Rather than asking it to make decisions for me, I used it to:
+- validate architectural ideas
+- reason through the clamp() formula
+- explore alternative layout approaches
+- review CSS structure and semantics
+- refine the documentation and English wording of this README
 
-- What tools did you use (e.g., ChatGPT, Claude, GitHub Copilot)?
-- How did you use them (e.g., debugging, generating boilerplate, brainstorming solutions)?
-- What worked well? What didn't?
+What worked especially well was using AI as a way to think out loud with pushback. In all cases, I wasn’t looking for the AI to decide for me, but to challenge my assumptions and help me compare alternatives.
 
-**Note: Delete this note and the content above if you didn't use AI, or replace with your own experience.**
+One thing this process reinforced is that not every different solution is necessarily a better one. The real work is still in developing the judgment to distinguish between a genuinely better architectural decision and a merely different implementation. That judgment still has to come from me.
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- Website - [Pau's Github](https://github.com/PauVera)
+- Frontend Mentor - [@PauVera](https://www.frontendmentor.io/profile/PauVera)
