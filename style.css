@@ -7,7 +7,7 @@
         box-sizing: border-box;
     }
 
-    body, h1, p {
+    body, h2, p {
         margin: 0;
     }
 
@@ -25,52 +25,146 @@
         --clr-white: hsl(0 0% 100%);
 
         --ff-base: "Figtree", sans-serif;
-        --fs-100: 0.875rem;
-        --fs-500: 1rem;
-        --fs-700: 1.5rem;
+        --fs-100: 0.75rem; /*12px*/
+        
+        /*Tomé la decisión de crear un nuevo token --fs-200 que no crezca según el tamaño del viewport, ya que --fs-100 y --fs-500 crecen desde los 900px de ancho del viewport. En el caso del diseño entregado, el nombre del autor se mantiene en 14px en versión móvil y desktop*/
+        --fs-200: 0.875rem; /*14px*/
+        --fs-500: 0.875rem; /*14px*/
+       
+        /*me di cuenta que en figma el tamaño de fuente para el titulo de la card es 20px, pero la versión desktop es 24px, así que decidí hacer una versión fluida entre 20 y 24px según tamaño del viewport*/
+        --fs-700: clamp(1.25rem, 1.18rem + 0.36vw, 1.5rem); /*20-24px*/
         --fw-medium: 500;
         --fw-x-bold: 800;
 
         --lh-base: 1.5;
 
-        --sp-50: 0.25rem;
-        --sp-100: 0.5rem;
-        --sp-150: 0.75rem;
-        --sp-300: 1.5rem;
+        --sp-50: 0.25rem; /*4px*/
+        --sp-100: 0.5rem; /*8px*/
+        --sp-150: 0.75rem; /*12px*/
+        --sp-300: 1.5rem; /*24px*/
+    }
+
+    @media (min-width: 55rem) {
+        :root {
+            --fs-100: 0.875rem; /*14px*/
+            --fs-500: 1rem; /*16px*/
+        }
     }
 }
 
 @layer base {
     body {
         min-height: 100svh;
-        
+        display: grid;
+        place-items: center;
+
+        background-color: var(--clr-yellow);
+        color: var(--clr-gray-950);
+
+        font-family: var(--ff-base);
+        font-size: var(--fs-500);   
+        line-height: var(--lh-base);
     }
     
     a {
-        color: ;
-        text-decoration: underline dotted 2px currentColor;
+        color: currentColor;
+        text-decoration: none;
     }
 
     a:hover,
-    a:focus {
-        text-decoration: underline 1px currentColor;
+    a:focus-visible {
+        color: var(--clr-yellow);
+    }
+
+    a:focus-visible {
+        outline: 2px solid var(--clr-yellow);
+        outline-offset: 3px;
     }
 }
 
 @layer components {
-    
-    .attribution {
-        padding-block: var(--sp-500);
+    .blog-card {
+        max-width: 24rem;
+        padding: var(--sp-300);
+        margin-inline: var(--sp-300);
 
-        background-color: var(--clr-slate-900);
-        color: var(--clr-slate-300);
+        background-color: var(--clr-white);
+
+        border: 1px solid var(--clr-gray-950);
+        border-radius: 20px;
+
+        box-shadow: 8px 8px 0 0 hsl(0 0% 0%);
+    }
+    
+    .blog-card__image {
+        border-radius: 10px;
+    }
+
+    .blog-card__content {
+        margin-block: var(--sp-300);
+
+        /*en origen había creado una clase flow (lobotomized owl de Andy Bell), pero tengo varios pensamientos:
+        1. Una card es una interfaz en sí misma
+        2. .flow tiene ventaja como clase utilitaria al aplicarse sobre layouts más genéricos o con contenido que cambia de sizing
+        3. mientras que convertir un contenedor a flex tiene más sentido en una layout más específica como el interior de una card*/
+        display: flex; 
+        flex-direction: column;
+        gap: var(--sp-150);
+    }
+
+    .blog-card__tag {
+        width: fit-content;
+        padding-inline: var(--sp-150);
+        padding-block: var(--sp-50);
+
+        background-color: var(--clr-yellow);
+
+        font-size: var(--fs-100);
+        font-weight: var(--fw-x-bold);
+
+        border-radius: 4px; /*no uso --sp-50 porque no quiero que mi border radius dependa de una variable de espaciado. Si fuera un proyecto más grande haría variables para tamaños de radio de borde (ej: --br-50: 4px; --br-500: 10px)*/
+    }
+
+    .blog-card__date {
+        font-size: var(--fs-100);
+        font-weight: var(--fw-medium);
+    }
+
+    .blog-card__title {
+        font-size: var(--fs-700);
+        font-weight: var(--fw-x-bold);
+    }
+
+    .blog-card__excerpt {
+        font-size: var(--fs-500);
+        font-weight: var(--fw-medium);
+        color: var(--clr-gray-500);
+    }
+
+    .blog-card__author {
+        display: flex;
+        align-items: center;
+        gap: var(--sp-150);
+
+        font-size: var(--fs-200);
+        font-weight: var(--fw-x-bold);
+    }
+
+    .blog-card__avatar {
+        width: 32px;
+        aspect-ratio: 1;
+    }
+
+    /* .attribution {
+        padding-block: ;
+
+        background-color: ;
+        color: ;
 
         text-align: center;
-    }
+    } */
 }
 
 @layer utilities {
-    .wrapper {
-        
-    }
+    
 }
