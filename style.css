@@ -27,11 +27,11 @@
         --ff-base: "Figtree", sans-serif;
         --fs-100: 0.75rem; /*12px*/
         
-        /*Tomé la decisión de crear un nuevo token --fs-200 que no crezca según el tamaño del viewport, ya que --fs-100 y --fs-500 crecen desde los 900px de ancho del viewport. En el caso del diseño entregado, el nombre del autor se mantiene en 14px en versión móvil y desktop*/
+       
         --fs-200: 0.875rem; /*14px*/
         --fs-500: 0.875rem; /*14px*/
        
-        /*me di cuenta que en figma el tamaño de fuente para el titulo de la card es 20px, pero la versión desktop es 24px, así que decidí hacer una versión fluida entre 20 y 24px según tamaño del viewport*/
+        
         --fs-700: clamp(1.25rem, 1.18rem + 0.36vw, 1.5rem); /*20-24px*/
         --fw-medium: 500;
         --fw-x-bold: 800;
@@ -102,11 +102,7 @@
 
     .blog-card__content {
         margin-block: var(--sp-300);
-
-        /*en origen había creado una clase flow (lobotomized owl de Andy Bell), pero tengo varios pensamientos:
-        1. Una card es una interfaz en sí misma
-        2. .flow tiene ventaja como clase utilitaria al aplicarse sobre layouts más genéricos o con contenido que cambia de sizing
-        3. mientras que convertir un contenedor a flex tiene más sentido en una layout más específica como el interior de una card*/
+        
         display: flex; 
         flex-direction: column;
         gap: var(--sp-150);
@@ -122,7 +118,7 @@
         font-size: var(--fs-100);
         font-weight: var(--fw-x-bold);
 
-        border-radius: 4px; /*no uso --sp-50 porque no quiero que mi border radius dependa de una variable de espaciado. Si fuera un proyecto más grande haría variables para tamaños de radio de borde (ej: --br-50: 4px; --br-500: 10px)*/
+        border-radius: 4px; 
     }
 
     .blog-card__date {
