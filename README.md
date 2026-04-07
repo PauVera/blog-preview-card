@@ -104,7 +104,7 @@ Going forward, I want to continue focusing on:
 - design systems and token architecture
 - accessibility and keyboard interaction states
 - CSS architecture and maintainable styling patterns
-- building fluid and responsive interfaces with intention
+- building fluid and responsive interfaces
 
 More specifically, I want to keep improving my ability to make architectural decisions based on component intent, rather than simply choosing a technique because it works.
 
