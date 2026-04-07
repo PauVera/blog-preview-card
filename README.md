@@ -1,6 +1,7 @@
 # Frontend Mentor - Blog preview card solution
 
-This is a solution to the [Blog preview card challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/blog-preview-card-ckPaj01IcS). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is my solution to the [Blog preview card challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/blog-preview-card-ckPaj01IcS).  
+This challenge was a great opportunity to practice semantic HTML, responsive typography, and CSS architecture decisions in a small but detail-oriented interface. 
 
 ## Table of contents
 
