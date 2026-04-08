@@ -35,7 +35,7 @@ This challenge also encouraged focusing on semantic HTML, visual precision, and 
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [Add solution URL here](https://www.frontendmentor.io/solutions/mobile-first-blog-preview-card-with-fluid-typography-xV8LWwpVik)
 - Live Site URL: [Live site in GitHub](https://pauvera.github.io/blog-preview-card/)
 
 ## My process
