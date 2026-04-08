@@ -71,12 +71,12 @@
         text-decoration: none;
     }
 
-    a:hover,
-    a:focus-visible {
+    a:hover {
         color: var(--clr-yellow);
     }
 
     a:focus-visible {
+        color: var(--clr-gray-950);
         outline: 2px solid var(--clr-yellow);
         outline-offset: 3px;
     }
